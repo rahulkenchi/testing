@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            count=0                       
+            
+            function counter(){
+                d=new Date()
+                hh=d.getHours()               
+                mm=d.getMinutes()
+                ss=d.getSeconds()   
+                text=""                     
+                if(hh < 12)
+                text="AM"
+                else if(hh >=12)                
+                {
+                    text="PM"
+                    hh=hh-12
+                }
+
+                document.getElementById("timer").innerHTML=hh+":"+mm+":"+ss+" "+text           
+                count++
+            }
+
+           
+                interval=setInterval(counter,1000)        
+        </script>
+
+    </head>
+
+    <body>
+        <h2>Watch</h2>
+        <p id="timer"></p>
+       
+    </body>
+    </html>
