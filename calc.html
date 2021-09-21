@@ -120,9 +120,9 @@
             //calculate answer of equation feed into the paragraph
             function equals(){
                 var app=document.createElement("p") // create a short paragraph to store it in history section
-                app.innerHTML=document.getElementById("displayarea").innerHTML //copy answer from main paragraph
-                document.getElementById("displayarea").innerHTML=eval( document.getElementById("displayarea").innerHTML);   //evalaute asnwer and store in paragraph                
-                app.innerHTML+="<br>="+eval( document.getElementById("displayarea").innerHTML);
+                app.innerHTML=document.getElementById("displayarea").innerHTML //copy equation from main paragraph
+                document.getElementById("displayarea").innerHTML=eval( document.getElementById("displayarea").innerHTML);   //evalaute answer and store in paragraph                
+                app.innerHTML+="<br>="+eval( document.getElementById("displayarea").innerHTML); //attach answer to previous quation to form a proper block
                 app.setAttribute("id","res");
                 document.getElementById("history").prepend(app) //prepend current answer with previous answers
             }
