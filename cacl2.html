@@ -12,8 +12,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <style>
 
-            main{                            
-                background-color:aqua;
+            main{                                            
                 padding:30px;
             }
 
@@ -25,13 +24,20 @@
 
             button:hover{
                 background-color: rgb(255, 255, 255);
+                transform:rotate
             }
+            
             #displayarea,#history{
                 margin-top:5px;
                 padding:5px;
                 width:100%;
                 min-height: 50px;
                 background-color: white;
+                overflow: auto; 
+            }
+
+            p{
+                width:100%;
             }
 
             #history{
@@ -53,7 +59,7 @@
         <script>
             // to append text in paragraph to form an equation.
             function text(tmp){                
-                document.getElementById("displayarea").value.tostring()+=tmp
+                document.getElementById("displayarea").innerText+=tmp
                 }
                 
             // to clear paragraph for new equation
@@ -75,11 +81,11 @@
 
             //calculate answer of equation feed into the paragraph
             function equals(){
-                document.getElementById("displayarea").innerHTML=eval( document.getElementById("displayarea").innerHTML);                
-                //evalaute asnwer and store in paragraph
-                var app=document.createElement("p") // create a short to store it in history section
+                var app=document.createElement("p") // create a short paragraph to store it in history section
                 app.innerHTML=document.getElementById("displayarea").innerHTML //copy answer from main paragraph
-                document.getElementById("history").appendChild(app) //append cuurent answer with previous answers
+                document.getElementById("displayarea").innerHTML=eval( document.getElementById("displayarea").innerHTML);   //evalaute asnwer and store in paragraph                
+                app.innerHTML+="<br>="+eval( document.getElementById("displayarea").innerHTML);
+                document.getElementById("history").prepend(app) //prepend current answer with previous answers
             }
         </script>
     </head>
@@ -88,10 +94,10 @@
         <main>
             <div class="container align-center w-50">
                 <div class="row">
-                    <textarea class="w-100 h-100" id="displayarea" height="100px"></textarea>
+                    <p class="w-100 h-100" id="displayarea" height="100px"></p>
                 </div>
                 <div class="row">
-                    <div class="col" style="background-color: red;">
+                    <div class="col">
                         <div class="row p-1 justify-right">
                             <button class="btn" id="cls" onclick="cls()">clear</button>
                             <button class="btn" id="back" onclick="back()">back</button>
@@ -124,7 +130,7 @@
                             <button class="btn" onclick="text('*')">*</button>
                         </div>
                     </div>
-                    <div class="col justify-content" style="background-color: red;">
+                    <div class="col justify-content">
                         <p class="row w-100" id="history"></p>
                         <button class="row btn " id="reset" onclick="reset()">Reset</button>
                     </div>
