@@ -81,8 +81,9 @@
             //calculate answer of equation feed into the paragraph
             function equals(){
                 var app=document.createElement("p") // create a short paragraph to store it in history section
-                document.getElementById("displayarea").innerHTML=eval( document.getElementById("displayarea").innerHTML);   //evalaute asnwer and store in paragraph                
                 app.innerHTML=document.getElementById("displayarea").innerHTML //copy answer from main paragraph
+                document.getElementById("displayarea").innerHTML=eval( document.getElementById("displayarea").innerHTML);   //evalaute asnwer and store in paragraph                
+                app.innerHTML+="<br>="+eval( document.getElementById("displayarea").innerHTML);
                 document.getElementById("history").prepend(app) //append cuurent answer with previous answers
             }
         </script>
